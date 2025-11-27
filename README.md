@@ -132,15 +132,37 @@ Se construyen las tareas mediante elementos nativos del DOM para:
 **4. Estado visual manejado con clases**
 Se usa `.classList.toggle("completed")` porque es simple, legible y evita reescribir estilos desde JS.
 
-**5. CSS simple y organizado**
-Se utilizó un diseño minimalista para que el enfoque esté en la lógica.
-
 **Tecnologías usadas**
 - HTML 
 - CSS 
-- JavaScript vanilla
+- JavaScript
 
 
 
 
-## Ejercicio-03 - 
+## Ejercicio-03 - Promedio de notas con transformaciones de datos
+Este ejercicio consiste en transformar un arreglo de estudiantes para calcular el promedio de sus notas. El resultado debe ser un nuevo arreglo que contenga solo el nombre y el promedio de notas de cada estudiante, y debe imprimirse en consola.
+
+Funcionalidades desarrolladas:
+
+**Transformación del arreglo original**  
+Se recibe un arreglo con objetos que contienen:
+- nombre del estudiante  
+- notas en formato de arreglo numérico  
+
+Se genera un nuevo arreglo donde cada elemento contiene:  
+- `nombre` y `promedio` redondeado a 2 decimales  
+
+**Cálculo del promedio**  
+El promedio se obtiene mediante:
+- `reduce()` → para sumar todas las notas  
+- dividir la suma entre la longitud del arreglo  
+- redondear con `toFixed(2)`  
+
+Impresión del resultado  
+El arreglo final se imprime en consola para verificar el funcionamiento solicitado.
+
+
+
+
+## Ejercicio-04 - 
