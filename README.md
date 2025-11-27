@@ -57,23 +57,15 @@ Todos los breakpoints se definieron manualmente con `@media`, para:
 - Entender cómo funcionan realmente las media queries.
 - Evitar dependencias de Bootstrap u otros frameworks.
 
-## 📱 Breakpoints utilizados
+**Breakpoints utilizados**
 - **Pantallas grandes:** 3 tarjetas  
 - **Tablets (ancho < 900px):** 2 tarjetas  
 - **Móviles (ancho < 600px):** 1 tarjeta  
 
-## 🛠️ Tecnologías usadas
+**Tecnologías usadas**
+- HTML5
+- CSS (Flexbox + Grid)
 
-- **HTML5**
-- **CSS (Flexbox + Grid)**
-
-
-
-
-
----
-
-## 🚀 Cómo visualizar el proyecto
-
-Solo abre el archivo:
+**Cómo visualizar el proyecto**
+Solo abre el archivo.
 
