@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page</title>
+
+<style>
+    /* Se define el tipo y color de letra además del color de fondo */
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #F7F7FA; /* gris suave del diseño */
+    color: #000000;
+}
+
+/* HEADER, encabezado que cuenta con varias secciones que pueden redireccionar a otras ventanas */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 35px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* HERO */
+.hero {
+    padding: 80px 30px;
+    text-align: center;
+}
+/* Titulo principal */
+.hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 15px;
+}
+/* Descripcion principal debajo del titulo principal */
+.hero p {
+    font-size: 18px;
+    max-width: 500px;
+    margin: auto;
+    opacity: 0.7;
+}
+
+/* Botón estilo QS */
+.hero button {
+    margin-top: 25px;
+    padding: 14px 30px;
+    background: #2C1E69; /* morado */
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(40, 5, 72, 0.5);
+    transition: background 0.3s;
+}
+/* cuando se pone el cursor sobre el boton se vuelve mas oscuro el boton */
+.hero button:hover {
+    background: #1E154C; /* Un morado más oscuro */
+}
+
+/* Casillas o tarjetas */
+/* contenedor de todas las casillas */
+.servicios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 40px 30px;
+}
+/* Estilo base de las casillas */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    text-align: center;
+
+    /* Transición suave */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+/* "Animacion" de la tarjeta que se eleva con el cursor */
+.card:hover {
+    /* Se eleva un poco cuando se pone el cursor sobre la casilla */
+    transform: translateY(-8px);
+
+    /* Sombra más intensa para dar efecto de elevación */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+/* titulo de la casilla */
+.card h3 {
+    color: #000000;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+/* Texto de la casilla debajo del titulo */
+.card p {
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+/* RESPONSIVE */
+/* ajustes para dispositivos moviles */
+@media (max-width: 900px) {
+    .servicios {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .servicios {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <!-- Espacio del Logo -->
+    <h2 style="color:#000000;; font-weight:700;">QS</h2>
+    <nav>
+        <ul>
+            <!-- Menu del encabezado -->
+            <li>Inicio</li>
+            <li>Servicios</li>
+            <li>Planes</li>
+            <li>Contacto</li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <!-- Titulo principal y descripcion debajo del tituulo -->
+    <h1>Bienvenidos a la Pagina Principal</h1>
+    <p>Aqui podrás encontrar un gran catalogo de nuestro servicios y productos.</p>
+    <button>Comenzar</button>
+</section>
+
+<section class="servicios">
+    <!-- informacion del contenedor de las casillas con sus respectivos titulos y descripciones -->
+    <div class="card">
+        <h3>Productividad</h3>
+        <p>Aumenta tu eficiencia y logra más en menos tiempo.</p>
+    </div>
+
+    <div class="card">
+        <h3>Análisis de datos</h3>
+        <p>Obtén métricas claras para tomar mejores decisiones.</p>
+    </div>
+
+    <div class="card">
+        <h3>Optimización</h3>
+        <p>Haz que tus tareas sean más rápidas y simples.</p>
+    </div>
+</section>
+
+</body>
+</html>
