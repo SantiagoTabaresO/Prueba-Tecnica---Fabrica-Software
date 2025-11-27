@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Tareas</title>
+
+<style>
+    /* Estilos generales */
+    /* Ajusta la tipografía, color de fondo y espaciados globales */
+    body {
+        font-family: system-ui, sans-serif;
+        background: #F5F5F9;
+        padding: 40px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    /* Contenedor principal de la lista */
+    .todo-container {
+        max-width: 400px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+     /* Grupo que contiene el input y el botón */
+    .input-group {
+        display: flex;
+        gap: 10px;
+    }
+
+    /* Campo donde el usuario escribe la tarea */
+    #taskInput {
+        flex-grow: 1;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    /* Botón para agregar una nueva tarea */
+    #addBtn {
+        padding: 10px 16px;
+        border: none;
+        background: #4B2FD7;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    #addBtn:hover {
+        background: #3623A6;
+    }
+
+    /* Lista que contiene todas las tareas creadas */
+    #taskList {
+        margin-top: 20px;
+        list-style: none;
+        padding: 0;
+    }
+
+    /* Estilo de cada tarea individual */
+    .task {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #F9F9FF;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo visual para una tarea marcada como completada */
+    .task.completed span {
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+    /* Botones dentro de cada tarea */
+    .task button {
+        border: none;
+        padding: 6px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    .complete-btn {
+        background: #22BB33;
+        color: white;
+    }
+
+    .delete-btn {
+        background: #D7263D;
+        color: white;
+        margin-left: 6px;
+    }
+</style>
+
+</head>
+<body>
+
+<h1>Lista de Tareas</h1>
+
+<div class="todo-container">
+
+    <!-- INPUT Y BOTÓN PARA AGREGAR TAREAS -->
+     <!-- Esta sección permite que el usuario escriba una tarea y la agregue a la lista -->
+    <div class="input-group">
+        <input id="taskInput" type="text" placeholder="Escribe una tarea">
+        <button id="addBtn">Agregar</button>
+    </div>
+
+    <!-- Aquí se mostrarán todas las tareas creadas -->
+    <ul id="taskList"></ul>
+
+</div>
+
+<script>
+/* 
+    Captura de elementos del DOM, se guardan los elementos con los que se va a trabajar
+*/
+const input = document.getElementById("taskInput");
+const addBtn = document.getElementById("addBtn");
+const taskList = document.getElementById("taskList");
+
+
+/* 
+    Evento para agregar tarea 
+*/
+addBtn.addEventListener("click", function () {
+
+    // Validación: evitar tareas vacías
+    if (input.value.trim() === "") {
+        alert("Por favor escribe una tarea.");
+        return;
+    }
+
+    // Crear el contenedor de la tarea
+    const li = document.createElement("li");
+    li.classList.add("task");
+
+    // Crear texto de la tarea
+    const taskText = document.createElement("span");
+    taskText.textContent = input.value;
+
+    // Botón completar
+    const completeBtn = document.createElement("button");
+    completeBtn.textContent = "✔";
+    completeBtn.classList.add("complete-btn");
+
+    // Botón eliminar
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "X";
+    deleteBtn.classList.add("delete-btn");
+
+    // Agregar elementos dentro del contenedor
+    li.appendChild(taskText);
+    li.appendChild(completeBtn);
+    li.appendChild(deleteBtn);
+
+    // Agregar contenedor a la lista
+    taskList.appendChild(li);
+
+    // Limpiar input
+    input.value = "";
+});
+
+
+/* 
+    Delegación de eventos:
+    Se marcan las tareas como realizadas y también se eliminan.
+*/
+taskList.addEventListener("click", function (e) {
+
+    const item = e.target;
+
+    // Si se hace clic en "completar"
+    if (item.classList.contains("complete-btn")) {
+        const li = item.parentElement;
+        li.classList.toggle("completed"); // Cambia el estilo (compleatada o no completada)
+    }
+
+    // Si se hace clic en "eliminar"
+    if (item.classList.contains("delete-btn")) {
+        const li = item.parentElement;
+        li.remove(); // Elimina la tarea
+    }
+});
+</script>
+
+</body>
+</html>
