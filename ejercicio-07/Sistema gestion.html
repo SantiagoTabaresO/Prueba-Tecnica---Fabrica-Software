@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestión de Tareas - Estilo QS</title>
+
+<style>
+    /* Se define el tipo y color de letra además del color de fondo */
+    body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: #F7F7FA;
+        color: #000;
+    }
+
+    /* HEADER, encabezado que cuenta con un menu de opciones */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 35px;
+        background: white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    header h2 {
+        font-weight: 700;
+    }
+
+    header nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+    }
+
+    header nav ul li {
+        font-size: 15px;
+        font-weight: 500;
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 10px 20px 20px 30px;
+        text-align: center;
+    }
+    /* Titulo principal */
+    .hero h1 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    /* Descripcion principal debajo del titulo principal */
+    .hero p {
+        font-size: 16px;
+        opacity: 0.7;
+        margin-bottom: 25px;
+    }
+
+    /* Botón estilo QS */
+    .hero button {
+        padding: 12px 25px;
+        background: #2C1E69;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(40,5,72,0.5);
+        transition: background 0.3s;
+    }
+
+    /* cuando se pone el cursor sobre el boton se vuelve mas oscuro el boton */
+    .hero button:hover {
+        background: #1E154C;
+    }
+
+    /* Estilo del formulario */
+    .formulario {
+        max-width: 500px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .formulario input, 
+    .formulario textarea, 
+    .formulario select, 
+    .formulario button {
+        width: 100%;
+        margin: 8px 0;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    /*Boton del formulario*/
+    .formulario button {
+        background: #2C1E69;
+        color: white;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .formulario button:hover {
+        background: #1E154C;
+    }
+
+    /* Contenedor de tareas (grid) */
+    .tareas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        padding: 30px;
+    }
+
+    /* casilla de tarea */
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        text-align: left;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+        opacity: 0.7;
+        margin: 5px 0;
+    }
+
+    .card button {
+        margin-top: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    /* Responsivo (dispositivos moviles) */
+    @media (max-width: 900px) {
+        .tareas {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        header {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .tareas {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <!-- encabezado - logo y minimenu -->
+    <h2>QS</h2>
+    <nav>
+        <ul>
+            <li>Inicio</li>
+            <li>Servicios</li>
+            <li>Planes</li>
+            <li>Contacto</li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Titulo principal y descripción -->
+<section class="hero">
+    <h1>Gestión de Tareas</h1>
+    <p>Crea, filtra y organiza tus tareas de manera sencilla.</p>
+</section>
+
+<!-- Configuracion del formulario -->
+<div class="formulario">
+    <input type="text" id="titulo" placeholder="Título de la tarea">
+    <textarea id="descripcion" placeholder="Descripción"></textarea>
+    <select id="estado">
+        <option value="Pendiente">Pendiente</option>
+        <option value="En progreso">En progreso</option>
+        <option value="Completada">Completada</option>
+    </select>
+    <button onclick="crearTarea()">Agregar Tarea</button>
+    <select id="filtroEstado" onchange="mostrarTareas()">
+        <option value="Todas">Todas</option>
+        <option value="Pendiente">Pendiente</option>
+        <option value="En progreso">En progreso</option>
+        <option value="Completada">Completada</option>
+    </select>
+</div>
+
+<!-- Contenedor con las tareas -->
+<div class="tareas" id="listaTareas"></div>
+
+<script>
+    // Variables y datos
+    let tareas = [];
+    let siguienteId = 1;
+
+    // Función para crear una nueva tarea
+    function crearTarea() {
+        const titulo = document.getElementById('titulo').value;
+        const descripcion = document.getElementById('descripcion').value;
+        const estado = document.getElementById('estado').value;
+
+        // Se asegura que los campos de titulo y descripcion no esten vacíos
+        if(!titulo || !descripcion) {
+            alert('Por favor completa título y descripción.');
+            return;
+        }
+
+        // Agregar la tarea al array de tareas
+        tareas.push({
+            id: siguienteId++, // Id que se autoincrementa
+            titulo,
+            descripcion,
+            estado
+        });
+
+        limpiarFormulario(); // funcion que limpia los campos de ingreso o inputs
+        mostrarTareas(); // Actualiza constantemente la lista de tareas
+    }
+
+    // Funcion que limpia los campos
+    function limpiarFormulario() {
+        document.getElementById('titulo').value = '';
+        document.getElementById('descripcion').value = '';
+        document.getElementById('estado').value = 'Pendiente';
+    }
+
+    // Funcion que constantemente actualiza la pantalla para ver las nuevas tareas
+    function mostrarTareas() {
+        const filtro = document.getElementById('filtroEstado').value;
+        const contenedor = document.getElementById('listaTareas');
+        contenedor.innerHTML = '';
+
+        const tareasFiltradas = filtro === 'Todas' ? tareas : tareas.filter(t => t.estado === filtro);
+
+        tareasFiltradas.forEach(t => {
+            const div = document.createElement('div');
+            div.className = `card ${t.estado.toLowerCase().replace(' ', '-')}`;
+            div.innerHTML = `
+                <h3>${t.titulo}</h3>
+                <p>${t.descripcion}</p>
+                <p><strong>ID:</strong> ${t.id}</p>
+                <p><strong>Estado:</strong> ${t.estado}</p>
+                <button onclick="cambiarEstado(${t.id})">Cambiar Estado</button>
+                <button onclick="eliminarTarea(${t.id})">Eliminar</button>
+            `;
+            contenedor.appendChild(div);
+        });
+    }
+
+    // Funcion que cambia el estado de la tarea que es llamada por el boton
+    function cambiarEstado(id) {
+        const tarea = tareas.find(t => t.id === id);
+        if(!tarea) return;
+
+        if(tarea.estado === 'Pendiente') tarea.estado = 'En progreso';
+        else if(tarea.estado === 'En progreso') tarea.estado = 'Completada';
+        else tarea.estado = 'Pendiente';
+
+        mostrarTareas();
+    }
+
+    // Funcion que elimina la tarea cuando el boton eliminar es presionado
+    function eliminarTarea(id) {
+        tareas = tareas.filter(t => t.id !== id);
+        mostrarTareas();
+    }
+
+    mostrarTareas();
+</script>
+</body>
+</html>
