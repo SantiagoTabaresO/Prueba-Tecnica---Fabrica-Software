@@ -115,7 +115,7 @@ Administra:
 - Eliminación de tareas  
 - Cambio de estado visual  
 
-**1. JavaScript nativo**
+**1. JavaScript**
 Se eligió no usar frameworks para evaluar el dominio real del DOM, como pedía el ejercicio.
 
 **2. Delegación de eventos**
@@ -226,4 +226,116 @@ La función recibe los filtros como un objeto estructurado:{ min: 1000, max: 300
 
 
 
-## Ejercicio-06 -
+## Ejercicio-06 - Buscar productos de la lista JSON
+Este ejercicio consiste en crear una función que lee un archivo JSON local (`productos.json`) y devuelve el precio del producto solicitado según su ID. El objetivo principal es evaluar el manejo de archivos, parseo de JSON y control de errores en Node.js.
+
+Funcionalidades desarrolladas:
+
+Obtener precio  
+La función `obtenerPrecio(id)` recibe un ID y devuelve:
+- El nombre del producto  
+- Su precio  
+
+Validación básica  
+Si el ID no existe en el JSON, se devuelve un mensaje indicando que no existe el producto.
+
+Manejo de errores  
+Si ocurre algún error al leer el archivo JSON (archivo inexistente, error de sintaxis, etc.), la función devuelve un mensaje de error genérico.
+
+**1. Node.js**
+Contiene:
+- Uso del módulo `fs` para leer archivos de manera local  
+- Lectura de `productos.json`  
+- Parseo de JSON a un arreglo de objetos  
+
+**2. Validación de datos**
+La función:
+- Verifica que el producto con el ID solicitado exista  
+- Maneja errores de lectura o parseo con `try/catch`  
+
+**3. Retorno de información**
+Dependiendo del caso:
+- Producto encontrado: `"El [nombre] cuesta [precio]"`  
+- Producto no encontrado: `"No existe un producto con ID [id]"`  
+- Error de lectura: `"Error al leer el archivo JSON"`  
+
+**4. Modularidad**
+Se exporta la función con `module.exports = { obtenerPrecio }` para poder usarla en otros archivos o pruebas unitarias.
+
+**Tecnologías usadas**
+- Node.js
+- Módulo nativo `fs`
+- JSON
+
+
+
+## ejercicio-07 - Sistema de gestion de tareas
+Este ejercicio consiste en crear un sistema interactivo de gestión de tareas donde el usuario puede agregar, filtrar, actualizar y eliminar tareas en tiempo real. El objetivo principal es evaluar el dominio del DOM, manejo de eventos, manipulación de arrays como estructura de datos y control básico de estado sin usar frameworks.
+
+Funcionalidades desarrolladas:
+
+Agregar tareas  
+El usuario ingresa un título, descripción y estado inicial, y agrega la tarea con el botón "Agregar Tarea".
+
+Validación básica  
+Si el título o la descripción están vacíos, se evita la creación de la tarea y se muestra una alerta simple.
+
+Filtrar tareas  
+El usuario puede filtrar la lista de tareas según su estado:
+- Todas  
+- Pendiente  
+- En progreso  
+- Completada  
+
+Actualizar estado  
+Cada tarea tiene un botón "Cambiar Estado" que cicla entre los estados:
+- Pendiente, En progreso, Completada, Pendiente,.....  
+El cambio se refleja visualmente mediante clases y estilos CSS.
+
+Eliminar tarea  
+Cada tarea tiene un botón "Eliminar" que remueve completamente la tarjeta del DOM y del array de tareas.
+
+Visualización mediante tarjetas  
+Las tareas se muestran en un grid de tarjetas (`.card`) con:
+- Bordes y sombras para estilo visual  
+- Colores diferenciales según el estado (Pendiente, En progreso, Completada)  
+- Responsive para tablet y móvil  
+
+**1. HTML**  
+Contiene:
+- Inputs para título y descripción  
+- Selector para estado inicial  
+- Botón para agregar la tarea  
+- Selector para filtrar tareas  
+- Contenedor donde se insertan dinámicamente las tarjetas de tareas  
+
+**2. CSS**  
+Define:
+- Estilo visual de la página inspirado en el diseño QS  
+- Tarjetas (`.card`) con sombra, borde redondeado y hover  
+- Colores para diferenciar estados  
+- Responsive grid de tarjetas para distintos tamaños de pantalla  
+
+**3. JavaScript**  
+Administra:
+- Array de tareas como estructura de datos  
+- Funciones para crear, eliminar y actualizar tareas  
+- Filtrado por estado  
+- Creación dinámica de tarjetas mediante `createElement`  
+- Aplicación de clases CSS para manejar el estado visual de cada tarea  
+
+**1. JavaScript nativo**  
+Se eligió no usar frameworks para evaluar el manejo de arrays, como pedía el ejercicio.
+
+**2. Modularidad y claridad**  
+Todas las funciones están separadas:
+- `crearTarea()`  
+- `mostrarTareas()`  
+- `cambiarEstado()`  
+- `eliminarTarea()`  
+- `limpiarFormulario()`  
+
+**Tecnologías usadas**
+- HTML
+- CSS
+- JavaScript nativo
