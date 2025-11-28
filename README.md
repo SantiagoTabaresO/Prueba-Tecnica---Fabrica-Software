@@ -165,4 +165,65 @@ El arreglo final se imprime en consola para verificar el funcionamiento solicita
 
 
 
-## Ejercicio-04 - 
+## Ejercicio-04 -  Conversión de hora a formato 12h y filtrado múltiple
+
+Este ejercicio consiste en crear una función capaz de transformar una hora dada en formato **24 horas** (por ejemplo `"14:35"`) a su equivalente en formato **12 horas** (por ejemplo `"2:35 PM"`). La función recibe una cadena `"HH:MM"` y realiza:
+- Separación de hora y minutos  
+- Conversión numérica de la hora  
+- Determinación del periodo **AM/PM**  
+- Ajustes especiales para horas como:
+  - `00:xx` → `12:xx AM`
+  - `12:xx` → `12:xx PM`
+  - `13–23` → (hora - 12) PM
+  - `01–11` → AM
+
+**Validación implícita del formato**
+Aunque el ejercicio no exige validaciones explícitas, el uso controlado de `split()` y `parseInt()` garantiza que la hora pueda manipularse de manera correcta.
+
+**1. Lógica en JavaScript**
+
+Separación de componentes  
+Se utiliza `split(":")` porque es la forma más sencilla y clara de dividir la hora en sus dos partes (horas y minutos).
+
+Conversión numérica  
+`parseInt()` se utiliza para transformar la hora a número y permitir comparaciones lógicas.
+
+Condicionales claras  
+El flujo de decisión está optimizado en 4 casos clave del formato de 12 horas:
+- Medianoche  
+- Horas de la mañana  
+- Mediodía  
+- Horas de la tarde  
+
+Retorno final
+La hora resultante se retorna como string siguiendo exactamente el formato solicitado: `"H:MM AM/PM"`
+
+
+
+## Ejercicio-05 - Filtrado de lista de comida
+Este ejercicio consiste en crear una función capaz de filtrar una lista de productos utilizando dos criterios: Un rango de precios y na categoría opcional ("bebida" o "comida").
+
+Funcionalidad desarrollada
+
+**Filtrado por rango de precios**  
+El usuario define un rango `{ min, max }` y el sistema retorna únicamente los productos cuyo precio esté dentro de esos límites.
+
+**Filtrado opcional por categoría**
+Además del rango de precios, puede especificarse si se desean únicamente:
+- bebidas  
+- comidas
+
+**Soporte para múltiples condiciones**
+La función combina ambas validaciones garantizando que:
+- si hay categoría, se usan ambas condiciones  
+- si no hay categoría, solo se filtra por precio  
+
+**1. JavaScript**
+Uso de `.filter()`:Se eligió `.filter()` porque es el método ideal para transformar un array basado en condiciones lógicas.
+
+**Parámetro como objeto**  
+La función recibe los filtros como un objeto estructurado:{ min: 1000, max: 3000, categoria: "bebida" }
+
+
+
+## Ejercicio-06 -
