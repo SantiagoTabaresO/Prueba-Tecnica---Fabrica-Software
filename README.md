@@ -339,3 +339,98 @@ Todas las funciones están separadas:
 - HTML
 - CSS
 - JavaScript nativo
+
+
+
+
+## ejercicio-09 - Componente de estados ()Lista de Usuarios con Filtro
+Este ejercicio consiste en crear un componente Vue que reciba una lista de usuarios mediante **props**, muestre la lista en tarjetas estilizadas y permita filtrar los usuarios por nombre en tiempo real. El objetivo principal es evaluar el dominio de **props**, **computed properties**, **bindings reactivos** y estilo visual tipo “tarjetas QS”.
+
+Funcionalidades desarrolladas:
+
+Mostrar lista de usuarios  
+El componente recibe un array de usuarios `{ id, nombre, email }` desde el componente padre y los muestra en tarjetas.
+
+Filtrar usuarios en tiempo real  
+El usuario puede escribir en un input y la lista se filtra automáticamente usando "v-model" y una **computed property**.
+
+Responsive y estilo visual  
+Cada usuario se muestra en una tarjeta con:
+- Bordes redondeados
+- Sombra suave
+- Hover para efecto visual
+- Grid responsive (3 columnas por defecto, 2 en tablet, 1 en móvil)
+
+Mensaje de lista vacía  
+Si no hay coincidencias con el filtro, se muestra un mensaje “No se encontraron usuarios”.
+
+**1. HTML (template del componente)**  
+- Input para filtrar  
+- Grid de tarjetas para mostrar usuarios  
+- Mensaje condicional si la lista filtrada está vacía  
+
+**2. CSS (scoped)**  
+- Tarjetas estilizadas como en el sistema de gestión de tareas  
+- Grid responsive  
+- Input estilizado  
+- Tipografía y colores consistentes  
+
+**3. JavaScript (Options API)**  
+- Prop `usuarios` para recibir datos del padre  
+- Data `filtro` para enlazar el input con v-model  
+- Computed property `usuariosFiltrados` para filtrar usuarios en tiempo real  
+- Uso de `v-for` y `:key` para renderizado eficiente  
+
+**1. Vue.js**  
+Se utiliza Options API para mantener el componente simple y comprensible para un nivel junior.
+
+**2. Bindings reactivos**  
+v-model permite que el input actualice automáticamente la computed property y la lista de usuarios en tiempo real.
+
+**3. Computed properties**  
+Se usan para filtrar usuarios de manera reactiva sin recalcular innecesariamente en cada render.
+
+**Tecnologías usadas**
+- Vue.js 3
+- HTML
+- CSS scoped
+- JavaScript
+
+
+
+## ejercicio.10 - Clase Java: Student con cálculo de promedio
+Este ejercicio consiste en crear una clase `Student` que represente a un estudiante con nombre, ID y lista de notas, e implementar un método `getPromedio()` que calcule el promedio de sus notas. Además, se crea una clase `Main` que instancia estudiantes y muestra sus promedios.
+
+Funcionalidades desarrolladas:
+
+Clase `Student`  
+- Contiene atributos privados: `nombre`, `id` y `notas`.  
+- Se utiliza **encapsulamiento** mediante getters y setters.  
+- Método `getPromedio()` que recorre la lista de notas y devuelve el promedio, evitando errores si no hay notas.
+
+Clase `Main`  
+- Instancia al menos 2 estudiantes con listas de notas diferentes.  
+- Imprime en consola el promedio de cada estudiante.
+
+**1. Java - Clase `Student`**  
+- Atributos privados para cumplir con encapsulamiento.  
+- Constructor para inicializar los valores.  
+- Getters y setters para acceder a los atributos.  
+- Método de negocio `getPromedio()` que calcula el promedio de manera simple y segura.
+
+**2. Java - Clase `Main`**  
+- Contiene el método `main` que sirve como punto de entrada de la aplicación.  
+- Se crean instancias de `Student`.  
+- Se muestra en consola el promedio usando `System.out.println()`.
+
+**3. Buenas prácticas de POO**  
+- Separación de clases (`Student.java` y `Main.java`).  
+- Encapsulamiento de atributos.  
+- Métodos claros y específicos para cada tarea.  
+
+**4. Simplicidad para principiantes**  
+- Uso de `List<Double>` y `Arrays.asList()` para inicializar notas.  
+- Evita lógica compleja para mantener claridad y legibilidad.
+
+**Tecnologías usadas**  
+- Java  
